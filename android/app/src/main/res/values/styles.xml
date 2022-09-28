@@ -15,4 +15,9 @@
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
+
+    <style name="AppCompat" parent="@style/Theme.AppCompat">
+        <!-- Any customizations for your app running on devices with Theme.Holo here -->
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
 </resources>
