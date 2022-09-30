@@ -41,8 +41,10 @@ class ChartActiveModel {
     double highest = 0;
     double lowest = highs.first;
 
-    //if (timestamp.length >= 30) {
-    for (int index = 0; index < timestamp.length; index++) {
+    var indicatorIndex = 0;
+    int index = timestamp.length > 30 ? timestamp.length - 30 : 0;
+
+    for (; index < timestamp.length; index++, indicatorIndex++) {
       if (highs[index] > highest) {
         highest = highs[index];
       }
@@ -56,19 +58,18 @@ class ChartActiveModel {
           close: closes[index],
           high: highs[index],
           low: lows[index],
-          first: index == 0 ? null : indicators.first,
-          previous: index == 0 ? null : indicators[index - 1],
+          first: indicatorIndex == 0 ? null : indicators.first,
+          previous: indicatorIndex == 0 ? null : indicators[indicatorIndex - 1],
         ),
       );
     }
-    //}
 
     return ChartActiveModel(
       symbol: meta['symbol'],
       indicators: indicators,
       highest: highest,
       lowest: lowest,
-      initialDate: timestamp.first,
+      initialDate: timestamp[timestamp.length > 30 ? timestamp.length - 30 : 0],
       finalDate: timestamp.last,
     );
   }

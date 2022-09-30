@@ -45,8 +45,8 @@ class PriceVariationController extends GetxController {
       loadingActive.value = true;
       return activeChart.value = await interface.getChart(code);
     } catch (error) {
-      debugPrint(error.toString());
-      rethrow;
+      errorMessage = error.toString();
+      throw errorMessage;
     } finally {
       loadingActive.value = false;
     }
@@ -56,7 +56,7 @@ class PriceVariationController extends GetxController {
     try {
       return await interface.search(search);
     } catch (error) {
-      debugPrint(error.toString());
+      errorMessage = error.toString();
       rethrow;
     }
   }

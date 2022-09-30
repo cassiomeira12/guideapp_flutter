@@ -14,21 +14,36 @@ class VariationGraphPage extends GetView<VariationGraphController> {
     Key? key,
   }) : super(key: key);
 
+  Future<bool> _onWillPop() async {
+    Get.offAllNamed('/');
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'variation_graph'.tr,
-          style: fontBody1(
-            context,
-            color: Colors.white,
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: false,
+          title: Text(
+            'variation_graph'.tr,
+            style: fontBody1(
+              context,
+              fontSize: 24,
+              color: Colors.white,
+            ),
+          ),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () => _onWillPop,
+            tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
@@ -51,7 +66,6 @@ class VariationGraphPage extends GetView<VariationGraphController> {
                 },
                 itemBuilder: (context, ActiveModel model) {
                   return ListTile(
-                    tileColor: Theme.of(context).scaffoldBackgroundColor,
                     title: Text(
                       model.symbol,
                       style: fontBody1(context),
@@ -70,71 +84,73 @@ class VariationGraphPage extends GetView<VariationGraphController> {
                 itemNotFound: 'active_not_found'.tr,
               ),
             ),
-            Obx(() {
-              if (controller.loadingActive.value) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                if (controller.errorMessage.isNotEmpty) {
-                  return Center(
-                    child: Text(
-                      controller.errorMessage,
-                      style: fontBody1(
-                        context,
-                        color: Colors.white,
-                      ),
-                    ),
+            Expanded(
+              child: Obx(() {
+                if (controller.loadingActive.value) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
                   );
-                } else if (controller.activeChart.value == null) {
-                  return const SizedBox.shrink();
                 } else {
-                  ChartActiveModel model = controller.activeChart.value!;
-                  return Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          controller.activeSelected.value!.longName,
-                          style: fontHead3(
-                            context,
-                            color: Colors.white,
-                          ),
+                  if (controller.errorMessage.isNotEmpty) {
+                    return Center(
+                      child: Text(
+                        controller.errorMessage,
+                        style: fontBody1(
+                          context,
+                          color: Colors.white,
                         ),
-                        Text(
-                          controller.activeSelected.value!.sectorIndustry,
-                          style: fontBody1(
-                            context,
-                            color: Colors.white,
+                      ),
+                    );
+                  } else if (controller.activeChart.value == null) {
+                    return const SizedBox.shrink();
+                  } else {
+                    ChartActiveModel model = controller.activeChart.value!;
+                    return SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            controller.activeSelected.value!.longName,
+                            style: fontHead3(
+                              context,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5.pxH),
-                        Container(
-                          width: 100.pxW,
-                          height: 40.pxH,
-                          margin: const EdgeInsets.symmetric(horizontal: 8),
-                          child: GraphWidget(
-                            initialDate: model.initialDate,
-                            finalDate: model.finalDate,
-                            highestPrice: model.highest,
-                            lowestPrice: model.lowest,
-                            values: model.indicators.map((indicator) {
-                              return GraphValue(
-                                date: indicator.timestamp,
-                                open: indicator.open,
-                                close: indicator.close,
-                                high: indicator.high,
-                                low: indicator.low,
-                              );
-                            }).toList(),
+                          Text(
+                            controller.activeSelected.value!.sectorIndustry,
+                            style: fontBody1(
+                              context,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
+                          SizedBox(height: 5.pxH),
+                          Container(
+                            width: 100.pxW,
+                            height: 40.pxH,
+                            margin: const EdgeInsets.symmetric(horizontal: 8),
+                            child: GraphWidget(
+                              initialDate: model.initialDate,
+                              finalDate: model.finalDate,
+                              highestPrice: model.highest,
+                              lowestPrice: model.lowest,
+                              values: model.indicators.map((indicator) {
+                                return GraphValue(
+                                  date: indicator.timestamp,
+                                  open: indicator.open,
+                                  close: indicator.close,
+                                  high: indicator.high,
+                                  low: indicator.low,
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                 }
-              }
-            }),
+              }),
+            ),
           ],
         ),
       ),

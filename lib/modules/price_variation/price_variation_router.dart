@@ -4,7 +4,7 @@ import 'price_variation_bindings.dart';
 import 'views/price_variation_page.dart';
 
 class PriceVariationRouter {
-  static const initial = '/';
+  static const initial = '/price_variation';
 
   static GetPage get page {
     return GetPage(

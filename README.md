@@ -1,16 +1,56 @@
-# guideapp_flutter
+# Guide App
 
-A new Flutter project.
+Teste prático para a Guide Investimentos
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### ✔️ Projeto
+- Projeto desenvolvido com Flutter versão 3.0.5
+- Gestão de Estado - [GetX](https://pub.dev/packages/get)
+- Client HTTP - [Dio](https://pub.dev/packages/dio)
+- Charts - [MRX Charts](https://pub.dev/packages/mrx_charts)
+- Auto Complete - [Flutter Typeahead](https://pub.dev/packages/flutter_typeahead)
+---
+<br />
 
-A few resources to get you started if this is your first Flutter project:
+### ✔️ Arquitetura
+- Projeto Clean Code
+- Projeto dividido em módulo (app, splash, price_variation e variation_graph)
+- App com integração entre telas Android Java e telas Flutter
+---
+<br />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 📡 API Yahoo Finance 
+- API Rest utilizada para consultar ativos listados na bolsa e gráficos
+- Base Url: https://query2.finance.yahoo.com
+- Endpoint para busca de ativos: GET https://query2.finance.yahoo.com/v1/finance/search
+- Endpoint para consultar dados de gráfico: GET https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA
+---
+<br />
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🗺️ Telas do Aplicativo
+A seguir algumas imagens do App
+<p align="center"> 
+  <img src="screenshot/page1.png" width="30%" title="hover text"> 
+  <img src="screenshot/page2.png" width="30%" title="hover text"> 
+  <img src="screenshot/page3.png" width="30%" title="hover text"> 
+</p>
+
+---
+<br />
+
+### 🔥 Configuracoes
+- As variáveis de ambiente estão armazenadas no arquivo env.dart localizado na pasta lib/modules/app/domain/env.dart
+- O tema do App pode ser personalizado acessando o arquivo light_theme.dart localizado na pasta lib/styles/themes/light_theme.dart
+---
+<br />
+
+### 🔥 Executar Guide App
+- O App pode ser executado rodando os comandos do Flutter
+- flutter pub get
+- flutter run
+---
+<br />
+
+<footer>
+  <p style="float:right; width: 40%;"> Copyright © Cássio Meira Silva 
+</p>

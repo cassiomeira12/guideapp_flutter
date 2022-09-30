@@ -112,35 +112,48 @@ class _AutoCompleteFieldState<T> extends State<AutoCompleteField<T>> {
           focusNode: widget.focus,
           controller: widget.controller,
           style: widget.fieldStyle ?? fontBody1(context),
-          cursorColor: Theme.of(context).primaryTextTheme.bodyText1?.color,
+          cursorColor: Theme.of(context).textTheme.bodyText1!.color!,
           decoration: InputDecoration(
             hintText: widget.hintText,
+            prefixIcon: const Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+            suffixIcon: GestureDetector(
+              onTap: () => widget.controller?.clear(),
+              child: const Icon(
+                Icons.clear,
+                color: Colors.white,
+              ),
+            ),
             hintStyle: fontBody1(
               context,
               color: Theme.of(context).textTheme.bodyText1?.color,
             ),
-            enabledBorder: UnderlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: Theme.of(context).textTheme.bodyText1!.color!,
               ),
             ),
-            focusedBorder: UnderlineInputBorder(
+            focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).textTheme.bodyText1!.color!,
               ),
             ),
-            disabledBorder: UnderlineInputBorder(
+            disabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Theme.of(context).disabledColor,
+                color: Theme.of(context).textTheme.bodyText1!.color!,
               ),
             ),
-            errorBorder: UnderlineInputBorder(
+            errorBorder: OutlineInputBorder(
               borderSide: BorderSide(
                 color: Theme.of(context).errorColor,
               ),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide.none,
+              borderSide: BorderSide(
+                color: Theme.of(context).textTheme.bodyText1!.color!,
+              ),
               borderRadius: BorderRadius.circular(0),
             ),
           ),
@@ -162,11 +175,10 @@ class _AutoCompleteFieldState<T> extends State<AutoCompleteField<T>> {
                     Text(
                       error.toString(),
                       textAlign: TextAlign.center,
-                      style: widget.fieldStyle ??
-                          fontBody1(
-                            context,
-                            color: Theme.of(context).errorColor,
-                          ),
+                      style: fontBody1(
+                        context,
+                        color: Theme.of(context).errorColor,
+                      ),
                     ),
                   ],
                 ),

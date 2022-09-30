@@ -165,7 +165,7 @@ class LightTheme {
       ),
       hoverColor: componentTertiaryFill,
       progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: contentPrimary,
+        color: barHeader,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: contentPrimary,

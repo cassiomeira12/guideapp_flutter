@@ -4,7 +4,7 @@ import 'variation_graph_bindings.dart';
 import 'views/variation_graph_page.dart';
 
 class VariationGraphRouter {
-  static const initial = '/';
+  static const initial = '/variation_graph';
 
   static GetPage get page {
     return GetPage(

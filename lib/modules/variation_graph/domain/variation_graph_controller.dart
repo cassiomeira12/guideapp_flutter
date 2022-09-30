@@ -45,7 +45,7 @@ class VariationGraphController extends GetxController {
       loadingActive.value = true;
       return activeChart.value = await interface.getChart(code);
     } catch (error) {
-      debugPrint(error.toString());
+      errorMessage = error.toString();
       rethrow;
     } finally {
       loadingActive.value = false;
@@ -56,7 +56,7 @@ class VariationGraphController extends GetxController {
     try {
       return await interface.search(search);
     } catch (error) {
-      debugPrint(error.toString());
+      errorMessage = error.toString();
       rethrow;
     }
   }

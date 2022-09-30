@@ -17,7 +17,7 @@ class FinanceRepository implements FinanceInterface {
   Future<ChartActiveModel> getChart(String code) async {
     try {
       var yesterday = DateTime.now().subtract(const Duration(days: 1));
-      var mesPassado = yesterday.subtract(const Duration(days: 30));
+      var mesPassado = yesterday.subtract(const Duration(days: 45));
 
       var period1 = mesPassado.millisecondsSinceEpoch ~/ 1000;
       var period2 = yesterday.millisecondsSinceEpoch ~/ 1000;
@@ -34,12 +34,14 @@ class FinanceRepository implements FinanceInterface {
       var data = response.data;
       var chart = data['chart'];
       var error = chart['error'];
+
       if (error != null) {
-        throw 'teste';
+        throw 'Não foi possível carregar o gráfico para esse ativo.';
       }
+
       var results = List.from(chart['result'] ?? []);
       if (results.isEmpty) {
-        throw 'ese';
+        throw 'Não foi possível carregar o gráfico para esse ativo.';
       } else {
         var model = ChartActiveModel.fromJson(results.first);
         return model;
