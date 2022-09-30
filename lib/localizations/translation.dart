@@ -15,8 +15,10 @@ class Translation extends Translations {
         'search_active': 'Pesquisar ativo',
         'active_not_found': 'Ativo não encontrado',
         'subtitle': 'Legenda',
-        'obs_variation_d1': 'Var D-1: variação em relaçào a D-1',
+        'obs_variation_d1': 'Var D-1: variação em relação a D-1',
         'obs_first_variation': 'Var 1º: variação em relação a primeira data',
+        'error_load_chart':
+            'Não foi possível carregar o gráfico para esse ativo.',
       },
     };
   }

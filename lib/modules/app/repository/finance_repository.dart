@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:guideapp_flutter/modules/app/domain/models/active_model.dart';
 import 'package:guideapp_flutter/modules/app/domain/models/chart_active_model.dart';
 
@@ -36,12 +37,12 @@ class FinanceRepository implements FinanceInterface {
       var error = chart['error'];
 
       if (error != null) {
-        throw 'Não foi possível carregar o gráfico para esse ativo.';
+        throw 'error_load_chart'.tr;
       }
 
       var results = List.from(chart['result'] ?? []);
       if (results.isEmpty) {
-        throw 'Não foi possível carregar o gráfico para esse ativo.';
+        throw 'error_load_chart'.tr;
       } else {
         var model = ChartActiveModel.fromJson(results.first);
         return model;
