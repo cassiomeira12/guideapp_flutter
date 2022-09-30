@@ -45,6 +45,7 @@ A seguir algumas imagens do App
 <br />
 
 ### 🔥 Executar Guide App
+- O APK do App está disponível na raíz do projeto: guideapp_flutter Release 1.0.0+1.apk
 - O App pode ser executado rodando os comandos do Flutter
 - flutter pub get
 - flutter run
