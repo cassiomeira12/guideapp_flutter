@@ -31,7 +31,7 @@ Teste prático para a Guide Investimentos
 A seguir algumas imagens do App
 <p align="center"> 
   <img src="screenshot/page1.png" width="30%" title="hover text"> 
-  <img src="screenshot/page2.png" width="30%" title="hover text"> 
+  <img src="screenshot/page2-updated.png" width="30%" title="hover text"> 
   <img src="screenshot/page3.png" width="30%" title="hover text"> 
 </p>
 
