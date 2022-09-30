@@ -12,7 +12,6 @@ class GraphWidget extends StatelessWidget {
   final List<GraphValue> values;
 
   late double _dayFrequency;
-  late double _dataFrequency;
   late double _priceFrequency;
 
   GraphWidget({
@@ -26,7 +25,6 @@ class GraphWidget extends StatelessWidget {
     _dayFrequency = (finalDate.millisecondsSinceEpoch.toDouble() -
             initialDate.millisecondsSinceEpoch.toDouble()) /
         10;
-    _dataFrequency = _dayFrequency / 3;
     _priceFrequency = ((highestPrice - lowestPrice) / lowestPrice) * 10;
   }
 

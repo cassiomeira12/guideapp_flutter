@@ -9,7 +9,7 @@ class VariationGraphRouter {
   static GetPage get page {
     return GetPage(
       name: initial,
-      page: () => VariationGraphPage(),
+      page: () => const VariationGraphPage(),
       binding: VariationGraphBindings(),
     );
   }
