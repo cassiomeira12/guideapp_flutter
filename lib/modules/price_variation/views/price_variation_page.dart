@@ -155,7 +155,53 @@ class PriceVariationPage extends GetView<PriceVariationController> {
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(height: 5.pxH),
+                        const SizedBox(height: 12),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'subtitle'.tr,
+                                style: fontBody2(
+                                  context,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'obs_variation_d1'.tr,
+                                style: fontBody2(context, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'obs_first_variation'.tr,
+                                style: fontBody2(context, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 2.pxH),
                         Expanded(
                           child: SingleChildScrollView(
                             child: Padding(
@@ -207,7 +253,6 @@ class PriceVariationPage extends GetView<PriceVariationController> {
     return TableRow(
       children: [
         Container(
-          height: 40,
           padding: const EdgeInsets.all(8),
           alignment: Alignment.centerLeft,
           child: Text(
@@ -219,8 +264,7 @@ class PriceVariationPage extends GetView<PriceVariationController> {
           ),
         ),
         Container(
-          height: 40,
-          padding: const EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             date,
@@ -231,8 +275,7 @@ class PriceVariationPage extends GetView<PriceVariationController> {
           ),
         ),
         Container(
-          height: 40,
-          padding: const EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             price,
@@ -243,8 +286,7 @@ class PriceVariationPage extends GetView<PriceVariationController> {
           ),
         ),
         Container(
-          height: 40,
-          padding: const EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             variationD1,
@@ -255,8 +297,7 @@ class PriceVariationPage extends GetView<PriceVariationController> {
           ),
         ),
         Container(
-          height: 40,
-          padding: const EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             firstVariation,
